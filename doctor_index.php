@@ -69,13 +69,13 @@ session_start();
 					<a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile <i class="icofont-thin-down"></i></a>
 					<ul class="dropdown-menu" aria-labelledby="dropdown03">
 						
-						<li><a class="dropdown-item" href="view_profile.php">View Profile</a></li>
-						<li><a class="dropdown-item" href="patientreg.php">Logout</a></li>
+						<li><a class="dropdown-item" href="doctor_profile.php">View Profile</a></li>
+						<li><a class="dropdown-item" href="index.php">Logout</a></li>
 					</ul>
 			  	</li>
 
 			    
-			   <li class="nav-item"><a class="nav-link" href="contact.html">View Patient</a></li>
+			   <li class="nav-item"><a class="nav-link" href="view_patient.php">View Patient</a></li>
                <li class="nav-item"><a class="nav-link" href="request.php">Leave Request</a></li>
                <li class="nav-item"><a class="nav-link" href="contact.html">Chat with Patient</a></li>
 			</ul>

@@ -1,19 +1,3 @@
-<?php
-include 'connection.php';
-if(isset($_POST['submit']))
-{
-    $name=$_POST['name'];
-    $age=$_POST['age'];
-    $phno=$_POST['phno'];
-    $address=$_POST['address'];
-    $user=$_POST['user'];
-    $pswd=$_POST['pswd'];
-	mysqli_query($conn,"insert into login_tb (type,username,password) values ('patient','$user','$pswd')");
-	$id=mysqli_insert_id($conn);
-	mysqli_query($conn,"INSERT INTO patient_reg(login_id,name,age,phno,address) VALUES('$id','$name','$age','$phno','$address')");
-header("location:index.php");
-}
-?>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -21,7 +5,7 @@ header("location:index.php");
   <meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
   <meta name="author" content="themefisher.com">
 
-  <title>Sanjivani- Health & Care Medical </title>
+  <title>Sanjivani</title>
 
   <!-- Favicon -->
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
@@ -38,7 +22,9 @@ header("location:index.php");
   <link rel="stylesheet" href="css/style.css">
 
 </head>
-<body>
+
+<body id="top">
+
 <header>
 	<div class="header-top-bar">
 		<div class="container">
@@ -73,66 +59,107 @@ header("location:index.php");
 		  <div class="collapse navbar-collapse" id="navbarmain">
 			<ul class="navbar-nav ml-auto">
 			  <li class="nav-item active">
-				<a class="nav-link" href="index.php">Home</a>
+				<a class="nav-link" href="patient_index.php">Home</a>
 			  </li>
+              <li class="nav-item active">
+				<a class="nav-link" href="index.php">Logout</a></li>
+			  <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
 			</ul>
 		  </div>
 		</div>
 	</nav>
 </header>
-<!-- section start -->
+	
+
+
 <section class="page-title bg-1">
   <div class="overlay"></div>
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="block text-center">
-        <section class="appoinment section">
+          <span class="text-white">Book your Seat</span>
+          <h1 class="text-capitalize mb-5 text-lg">Appointment</h1>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="appoinment section">
   <div class="container">
     <div class="row">
+      <div class="col-lg-4">
+          <div class="mt-3">
+            <div class="feature-icon mb-3">
+              <i class="icofont-support text-lg"></i>
+            </div>
+             <span class="h3">Call for an Emergency Service!</span>
+              <h2 class="text-color mt-3">+84 789 1256 </h2>
+          </div>
+      </div>
 
-      <div class="col-lg-6">
+      <div class="col-lg-8">
            <div class="appoinment-wrap mt-5 mt-lg-0 pl-lg-5">
-           <h2 class="mb-2 title-color" style="color:white">Sign Up</h2>
-            <p class="mb-4">Please fill in this form to create an account!</p>
-               <form id="#" class="appoinment-form" method="post" >
+            <h2 class="mb-2 title-color">Book an appointment</h2>
+            <p class="mb-4">Mollitia dicta commodi est recusandae iste, natus eum asperiores corrupti qui velit . Iste dolorum atque similique praesentium soluta.</p>
+               <form id="#" class="appoinment-form" method="post" action="#">
                     <div class="row">
                          <div class="col-lg-6">
                             <div class="form-group">
-                                <input name="name" id="" type="text" class="form-control" placeholder="Your Name">
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                  <option>Choose Department</option>
+                                  <option>General Medicine</option>
+                                  <option>Gynaecology</option>
+                                  <option>Paediatrics</option>
+                                  <option>Obstetrics</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <select class="form-control" id="exampleFormControlSelect2">
+                                  <option>Select Doctors</option>
+                                  <option>Sam</option>
+                                  <option>Alex</option>
+                                  <option>Bindu</option>
+                                  <option>Joeseph</option>
+                                  <option>Anoop Menon</option>
+                                  <option>Radha devi</option>
+                                  <option>Aneesha</option>
+                                </select>
+                            </div>
+                        </div>
+
+                         <div class="col-lg-6">
+                            <div class="form-group">
+                                <input name="date" id="date" type="date" class="form-control" placeholder="dd/mm/yyyy">
                             </div>
                         </div>
 
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <input name="age" id="" type="text" class="form-control" placeholder="Age">
+                                <input name="time" id="time" type="text" class="form-control" placeholder="Time">
                             </div>
                         </div>
-                        
-                        <div class="col-lg-12">
+                         <div class="col-lg-6">
                             <div class="form-group">
-                                <input name="phno" id="" type="text" class="form-control" placeholder="Phone number">
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                        <textarea name="address" id="message" class="form-control" rows="6" placeholder="Your Address"></textarea>
-                    </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <input name="user" id="" type="text" class="form-control" placeholder="Username">
+                                <input name="name" id="name" type="text" class="form-control" placeholder="Full Name">
                             </div>
                         </div>
 
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <input name="pswd" id="" type="password" class="form-control" placeholder="Password">
+                                <input name="phone" id="phone" type="text" class="form-control" placeholder="Phone Number">
                             </div>
                         </div>
+                        <div class="col-lg-12">
+                        <textarea name="message" id="message" class="form-control" rows="6" placeholder="Your Message"></textarea>
                     </div>
-                    <button name="submit" class="btn btn-primary">submit</button>
-              
+
+                    </div>
+                    <a class="btn btn-main btn-round-full" name="sub" href="confirmation.html">Make Appointment<i class="icofont-simple-right ml-2"></i></a>
                 </form>
             </div>
         </div>
@@ -140,13 +167,8 @@ header("location:index.php");
     </div>
   </div>
 </section>
-        
-		</div>
-      </div>
-    </div>
-  </div>
-</section>
-<!--section end -->
+
+
 <!-- footer Start -->
 <footer class="footer section gray-bg">
 	<div class="container">
@@ -239,5 +261,32 @@ header("location:index.php");
 		</div>
 	</div>
 </footer>
-</body>
-</html>
+   
+
+    <!-- 
+    Essential Scripts
+    =====================================-->
+
+    
+    <!-- Main jQuery -->
+    <script src="plugins/jquery/jquery.js"></script>
+    <!-- Bootstrap 4.3.2 -->
+    <script src="plugins/bootstrap/js/popper.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="plugins/counterup/jquery.easing.js"></script>
+    <!-- Slick Slider -->
+    <script src="plugins/slick-carousel/slick/slick.min.js"></script>
+    <!-- Counterup -->
+    <script src="plugins/counterup/jquery.waypoints.min.js"></script>
+    
+    <script src="plugins/shuffle/shuffle.min.js"></script>
+    <script src="plugins/counterup/jquery.counterup.min.js"></script>
+    <!-- Google Map -->
+    <script src="plugins/google-map/map.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>    
+    
+    <script src="js/script.js"></script>
+    <script src="js/contact.js"></script>
+
+  </body>
+  </html>

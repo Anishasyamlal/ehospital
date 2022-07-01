@@ -1,3 +1,8 @@
+<?php
+include 'connection.php';
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -80,34 +85,43 @@
            <h2 class="mb-2 title-color" style="color:white">My Profile</h2>
             
                <form id="#" class="appoinment-form" method="post" >
-               <table>
-                        <tr>
-                            <th>Name</th>
-                            <td> 
-                            <input name="name" id="" type="text" class="form-control" ></td>
-                            <th>Email</th>
-                            <td><input name="mail" id="" type="email" class="form-control">
-                            </td>
-                        </tr>
-                        <tr>
-                        <th>Date Of Birth</th>
-                            <td> 
-                            <input name="date" id="text" type="text" class="form-control" ></td>
-                            <th>Phn.No</th>
-                            <td><input name="phno" id="" type="text" class="form-control" >
-                            </td>
-                        </tr>
-                        <th>Address</th>
-                            <td> 
-                            <input name="address" id="text" type="text" class="form-control" ></td>
-                            <th>Department</th>
-                            <td><input name="department" id="" type="text" class="form-control" >
-                            </td>
-                        </tr>
-                        <tr><th colspan=4><button name="submit" class="btn btn-primary">Edit</button></th></tr>
-                        
-                    </table>
-                </form>
+			   <div class="row">
+				   <?php
+				   while($row=mysqli_fetch_assoc($query))
+				   {
+				   ?>
+                         <div class="col-lg-6">
+                            <div class="form-group">
+							<label class="labels">Name</label> <input name="name" id="" type="text" class="form-control" value="<?php echo $row['name']; ?>" >
+                            </div>
+                        </div>
+						<div class="col-lg-6">
+                            <div class="form-group">
+							<label class="labels">Email</label> <input name="email" id="" type="text" class="form-control" value="<?php echo $row['email']; ?>" >
+                            </div>
+                        </div>
+			            <div class="col-lg-6">
+                            <div class="form-group">
+							<label class="labels">Phn.No</label>      <input name="phno" id="" type="text" class="form-control" value="<?php echo $row['phno']; ?>">
+                            </div>
+                        </div>
+						<div class="col-lg-6">
+                            <div class="form-group">
+							<label class="labels">Department</label>      <input name="department" id="" type="text" class="form-control" value="<?php echo $row['department']; ?>" >
+                            </div>
+                        </div>
+						<div class="col-lg-12">
+                            <div class="form-group">
+							<label class="labels">Address</label><input name="address" id="" class="form-control" rows="4" value="<?php echo $row['address']; ?>" ></input>
+                    </div>
+                        </div>
+						<?php
+				   }
+				   ?>
+			   </div>
+						<button name="edit" class="btn btn-primary">Edit</button>
+			
+			</form>
             </div>
         </div>
       </div>

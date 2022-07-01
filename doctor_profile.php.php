@@ -1,17 +1,17 @@
 <?php
 include 'connection.php';
-if(isset($_POST['submit']))
+session_start();
+$id=$_SESSION['login_id'];
+$query=mysqli_query($conn,"select * from doctor_reg where login_id='$id'");
+if(isset($_POST['edit']))
 {
-    $name=$_POST['name'];
-    $age=$_POST['age'];
-    $phno=$_POST['phno'];
-    $address=$_POST['address'];
-    $user=$_POST['user'];
-    $pswd=$_POST['pswd'];
-	mysqli_query($conn,"insert into login_tb (type,username,password) values ('patient','$user','$pswd')");
-	$id=mysqli_insert_id($conn);
-	mysqli_query($conn,"INSERT INTO patient_reg(login_id,name,age,phno,address) VALUES('$id','$name','$age','$phno','$address')");
-header("location:index.php");
+	$name=$_POST['name'];
+	$mail=$_POST['email'];
+	$phno=$_POST['phno'];
+	$department=$_POST['department'];
+	$address=$_POST['address'];
+mysqli_query($conn,"update doctor_reg set name='$name',email='$mail',phno='$phno',department='$department',address='$address'");
+header("location:doctor_index.php");
 }
 ?>
 <!DOCTYPE html>
@@ -73,16 +73,16 @@ header("location:index.php");
 		  <div class="collapse navbar-collapse" id="navbarmain">
 			<ul class="navbar-nav ml-auto">
 			  <li class="nav-item active">
-				<a class="nav-link" href="index.php">Home</a>
+				<a class="nav-link" href="doctor_index.php">Home</a>
 			  </li>
+              <li class="nav-item"><a class="nav-link" href="index.php">Logout</a></li>
+              
 			</ul>
 		  </div>
 		</div>
 	</nav>
 </header>
-<!-- section start -->
-<section class="page-title bg-1">
-  <div class="overlay"></div>
+<section class="banner">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -93,60 +93,52 @@ header("location:index.php");
 
       <div class="col-lg-6">
            <div class="appoinment-wrap mt-5 mt-lg-0 pl-lg-5">
-           <h2 class="mb-2 title-color" style="color:white">Sign Up</h2>
-            <p class="mb-4">Please fill in this form to create an account!</p>
+           <h2 class="mb-2 title-color" style="color:white">My Profile</h2>
+            
                <form id="#" class="appoinment-form" method="post" >
-                    <div class="row">
+			   <div class="row">
+				   <?php
+				   while($row=mysqli_fetch_assoc($query))
+				   {
+				   ?>
                          <div class="col-lg-6">
                             <div class="form-group">
-                                <input name="name" id="" type="text" class="form-control" placeholder="Your Name">
+							<label class="labels">Name</label> <input name="name" id="" type="text" class="form-control" value="<?php echo $row['name']; ?>" >
                             </div>
                         </div>
-
-                        <div class="col-lg-6">
+						<div class="col-lg-6">
                             <div class="form-group">
-                                <input name="age" id="" type="text" class="form-control" placeholder="Age">
+							<label class="labels">Email</label> <input name="email" id="" type="text" class="form-control" value="<?php echo $row['email']; ?>" >
                             </div>
                         </div>
-                        
-                        <div class="col-lg-12">
+			            <div class="col-lg-6">
                             <div class="form-group">
-                                <input name="phno" id="" type="text" class="form-control" placeholder="Phone number">
+							<label class="labels">Phn.No</label>      <input name="phno" id="" type="text" class="form-control" value="<?php echo $row['phno']; ?>">
                             </div>
                         </div>
-                        <div class="col-lg-12">
+						<div class="col-lg-6">
                             <div class="form-group">
-                        <textarea name="address" id="message" class="form-control" rows="6" placeholder="Your Address"></textarea>
+							<label class="labels">Department</label>      <input name="department" id="" type="text" class="form-control" value="<?php echo $row['department']; ?>" >
+                            </div>
+                        </div>
+						<div class="col-lg-12">
+                            <div class="form-group">
+							<label class="labels">Address</label><input name="address" id="" class="form-control" rows="4" value="<?php echo $row['address']; ?>" ></input>
                     </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <input name="user" id="" type="text" class="form-control" placeholder="Username">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <input name="pswd" id="" type="password" class="form-control" placeholder="Password">
-                            </div>
-                        </div>
-                    </div>
-                    <button name="submit" class="btn btn-primary">submit</button>
-              
-                </form>
+						<?php
+				   }
+				   ?>
+			   </div>
+						<button name="edit" class="btn btn-primary">Edit</button>
+			
+			</form>
             </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-        
-		</div>
-      </div>
-    </div>
-  </div>
-</section>
-<!--section end -->
 <!-- footer Start -->
 <footer class="footer section gray-bg">
 	<div class="container">
