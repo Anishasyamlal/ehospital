@@ -57,10 +57,10 @@
 		  <div class="collapse navbar-collapse" id="navbarmain">
 			<ul class="navbar-nav ml-auto">
 			  <li class="nav-item active">
-				<a class="nav-link" href="index.html">Home</a>
+				<a class="nav-link" href="index.php">Home</a>
 			  </li>
              
-			   <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+			   <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
 			   <li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Registration <i class="icofont-thin-down"></i></a>
 					<ul class="dropdown-menu" aria-labelledby="dropdown03">
@@ -69,34 +69,10 @@
 						<li><a class="dropdown-item" href="patientreg.php">Patient</a></li>
 					</ul>
 			  	</li>
+				  <li class="nav-item"><a class="nav-link" href="department.php">Department</a></li>
+			    
 
-			    <li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Department <i class="icofont-thin-down"></i></a>
-					<ul class="dropdown-menu" aria-labelledby="dropdown02">
-						<li><a class="dropdown-item" href="department.html">General Medicine</a></li>
-						<li><a class="dropdown-item" href="department-single.html">Gynaecology</a></li>
-                        <li><a class="dropdown-item" href="department-single.html">Obstetrics</a></li>
-                        <li><a class="dropdown-item" href="department-single.html">Paediatrics</a></li>
-					</ul>
-			  	</li>
-
-			  	<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="doctor.html" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Doctors <i class="icofont-thin-down"></i></a>
-					<ul class="dropdown-menu" aria-labelledby="dropdown03">
-						<li><a class="dropdown-item" href="doctor.html">Doctors</a></li>
-						<li><a class="dropdown-item" href="doctor-single.html">Doctor </a></li>
-					</ul>
-			  	</li>
-<!--
-			   <li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="blog-sidebar.html" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog <i class="icofont-thin-down"></i></a>
-					<ul class="dropdown-menu" aria-labelledby="dropdown05">
-						<li><a class="dropdown-item" href="blog-sidebar.html">Blog with Sidebar</a></li>
-
-						<li><a class="dropdown-item" href="blog-single.html">Blog Single</a></li>
-					</ul>
-			  	</li> -->
-			   <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+			   <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
 			</ul>
 		  </div>
 		</div>

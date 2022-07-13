@@ -1,3 +1,26 @@
+<?php
+include 'connection.php';
+session_start();
+$id=$_SESSION['login_id'];
+if(isset($_POST['sub']))
+{
+  $name=$_POST['name'];
+  $date=$_POST['date'];
+  $time=$_POST['time'];
+  $phn=$_POST['phone'];
+  $message=$_POST['message'];
+  $department=$_POST['department'];
+  $doctor=$_POST['doctor'];
+  $query=mysqli_query($conn,"select doctor_reg.doctor_id,patient_reg.patient_id from doctor_reg join patient_reg where doctor_reg.name='$doctor' and patient_reg.login_id='$id'");
+  if(mysqli_num_rows($query)>0){
+    $result=mysqli_fetch_assoc($query);
+    $doctor_id=$result['doctor_id'];
+    $patient_id=$result['patient_id'];
+    mysqli_query($conn,"insert into book_slot (patient_id,doctor_id,name,phno,date,time,department,message,medicine) values ('$patient_id','$doctor_id','$name','$phn','$date','$time','$department','$message','0')");
+header("location:patient_index.php");
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -63,7 +86,7 @@
 			  </li>
               <li class="nav-item active">
 				<a class="nav-link" href="index.php">Logout</a></li>
-			  <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+			  <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
 			</ul>
 		  </div>
 		</div>
@@ -108,7 +131,7 @@
                     <div class="row">
                          <div class="col-lg-6">
                             <div class="form-group">
-                                <select class="form-control" id="exampleFormControlSelect1">
+                                <select class="form-control" name="department" id="exampleFormControlSelect1">
                                   <option>Choose Department</option>
                                   <option>General Medicine</option>
                                   <option>Gynaecology</option>
@@ -119,7 +142,7 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <select class="form-control" id="exampleFormControlSelect2">
+                                <select class="form-control" name="doctor" id="exampleFormControlSelect2">
                                   <option>Select Doctors</option>
                                   <option>Sam</option>
                                   <option>Alex</option>
@@ -159,7 +182,7 @@
                     </div>
 
                     </div>
-                    <a class="btn btn-main btn-round-full" name="sub" href="confirmation.html">Make Appointment<i class="icofont-simple-right ml-2"></i></a>
+                    <button class="btn btn-main btn-round-full" name="sub" >Make Appointment<i class="icofont-simple-right ml-2"></i></button>
                 </form>
             </div>
         </div>

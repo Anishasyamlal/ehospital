@@ -1,28 +1,3 @@
-<?php
-include 'connection.php';
-session_start();
-$id=$_SESSION['login_id'];
-$query=mysqli_query($conn,"select doctor_id from doctor_reg where login_id='$id'");
-if(mysqli_num_rows($query)>0){
-	$result=mysqli_fetch_assoc($query);
-	$doctor_id=$result['doctor_id'];
-	$qry=mysqli_query($conn,"select * from book_slot where doctor_id='$doctor_id'");
-}
-if(isset($_POST['submit']))
-{
-$name=$_POST['nm'];
-$image=$_FILES['img']['name'];
-if($image!=""){
-	$filearray=pathinfo($_FILES['img']['name']);
-	$file1=rand();
-	$file_ext=$filearray["extension"];
-	$filenew=$file1.".".$file_ext;
-	move_uploaded_file($_FILES['img']['tmp_name'],"images/".$filenew);
-}
-$query=mysqli_query($conn,"update book_slot set medicine='$filenew' where name='$name'");
-header("location:doctor_index.php");
-}
-?>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -82,65 +57,114 @@ header("location:doctor_index.php");
 		  <div class="collapse navbar-collapse" id="navbarmain">
 			<ul class="navbar-nav ml-auto">
 			  <li class="nav-item active">
-				<a class="nav-link" href="doctor_index.php">Home</a>
+				<a class="nav-link" href="index.php">Home</a>
 			  </li>
-              <li class="nav-item"><a class="nav-link" href="index.php">Logout</a></li>
-              
 			</ul>
 		  </div>
 		</div>
 	</nav>
 </header>
-<section class="banner">
+<section class="page-title bg-1">
+  <div class="overlay"></div>
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="block text-center">
-        <section class="appoinment section">
-  <div class="container">
-    <div class="row">
+          <span class="text-white">All Department</span>
+          <h1 class="text-capitalize mb-5 text-lg">Care Department</h1>
 
-      <div class="col-lg-6">
-           <div class="appoinment-wrap mt-5 mt-lg-0 pl-lg-5">
-           <h2 class="mb-2 title-color" style="color:white">Patient List</h2>
-            
-               <form id="#" class="appoinment-form" method="post" enctype="multipart/form-data" >
-			 <!--  <div class="table-responsive"-->
-                    <table class="table">
-                      <thead>
-					  
-                        <tr>
-                          <th>Name</th>
-                          <th>Phn.No.</th>
-                          <th>Message</th>
-                          <th>Medicines</th>
-						  <th>Action</th>
-                        </tr>
-                      </thead>
-					  <tbody>
-					  <?php
-				   while($row=mysqli_fetch_assoc($qry))
-				   {
-				   ?>
-						  <tr>
-							  <td><input type="text" name="nm" value="<?php echo $row['name']; ?>" ></td>
-							  <td><input type="text" value="<?php echo $row['phno']; ?>" ></td>
-							  <td><input type="text" value="<?php echo $row['message']; ?>" ></td>
-							  <td><input type="file" name="img" value="Prescription Upload"></td>
-							  <td><button name="submit" class="btn btn-primary">Send</button></td>
-						  </tr>
-					  </tbody>
-					  <?php
-				   }
-				   ?>
-					</table>
-			   
-			</form>
-            </div>
         </div>
       </div>
     </div>
   </div>
+</section>
+<section class="section service-2">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-7 text-center">
+				<div class="section-title">
+					<h2>Award winning patient care</h2>
+					<div class="divider mx-auto my-4"></div>
+					<p>Lets know moreel necessitatibus dolor asperiores illum possimus sint voluptates incidunt molestias nostrum laudantium. Maiores porro cumque quaerat.</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-4 col-md-6 ">
+				<div class="department-block mb-5">
+					<img src="images/eye.jpg" alt="" class="img-fluid w-100">
+					<div class="content">
+						<h4 class="mt-4 mb-2 title-color">Opthomology</h4>
+						<p class="mb-4">Provides a well-equipped facility for the complete examination, diagnosis, and treatment (both medically and surgically) 
+							of all ocular diseases in both adult and paediatric patients.</p>
+						
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-4 col-md-6">
+				<div class="department-block mb-5">
+					<img src="images/cardiology.jpg" alt="" class="img-fluid w-100">
+					<div class="content">
+						<h4 class="mt-4 mb-2  title-color">Cardiology</h4>
+						<p class="mb-4">Medical diagnosis and treatment of congenital heart defects, coronary artery disease, heart failure,
+							 valvular heart disease and electrophysiology.</p>
+						
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-lg-4 col-md-6">
+				<div class="department-block mb-5">
+					<img src="images/dental.jpg" alt="" class="img-fluid w-100">
+					<div class="content">
+						<h4 class="mt-4 mb-2 title-color">Dental Care</h4>
+						<p class="mb-4">We are able to maintain a running out patient department 
+							and inpatient facilities, since its establishment. </p>
+						
+					</div>
+				</div>
+			</div>
+
+
+			<div class="col-lg-4 col-md-6 ">
+				<div class="department-block  mb-5 mb-lg-0">
+					<img src="images/child.jpg" alt="" class="img-fluid w-100">
+					<div class="content">
+						<h4 class="mt-4 mb-2 title-color">Child Care</h4>
+						<p class="mb-4">The department provides comprehensive care starting 
+							from preventive care to guidance for life skills for infants and children.</p>
+						
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-4 col-md-6">
+				<div class="department-block mb-5 mb-lg-0">
+					<img src="images/pulmonogy.jpg" alt="" class="img-fluid w-100">
+					<div class="content">
+						<h4 class="mt-4 mb-2 title-color">Pulmology</h4>
+						<p class="mb-4">The department offers comprehensive consultative evaluation, 
+							diagnosis and treatment to patients with respiratory tract, lungs and airway diseases.</p>
+						
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-lg-4 col-md-6">
+				<div class="department-block mb-5 mb-lg-0">
+					<img src="images/gynac.jpg" alt="" class="img-fluid w-100">
+					<div class="content">
+						<h4 class="mt-4 mb-2 title-color">Gynecology</h4>
+						<p class="mb-4"> Diagnose and treat reproductive system disorders such as endometriosis,
+							 infertility, ovarian cysts, and pelvic pain.</p>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
 <!-- footer Start -->
 <footer class="footer section gray-bg">

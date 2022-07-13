@@ -1,28 +1,3 @@
-<?php
-include 'connection.php';
-session_start();
-$id=$_SESSION['login_id'];
-$query=mysqli_query($conn,"select doctor_id from doctor_reg where login_id='$id'");
-if(mysqli_num_rows($query)>0){
-	$result=mysqli_fetch_assoc($query);
-	$doctor_id=$result['doctor_id'];
-	$qry=mysqli_query($conn,"select * from book_slot where doctor_id='$doctor_id'");
-}
-if(isset($_POST['submit']))
-{
-$name=$_POST['nm'];
-$image=$_FILES['img']['name'];
-if($image!=""){
-	$filearray=pathinfo($_FILES['img']['name']);
-	$file1=rand();
-	$file_ext=$filearray["extension"];
-	$filenew=$file1.".".$file_ext;
-	move_uploaded_file($_FILES['img']['tmp_name'],"images/".$filenew);
-}
-$query=mysqli_query($conn,"update book_slot set medicine='$filenew' where name='$name'");
-header("location:doctor_index.php");
-}
-?>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -47,7 +22,6 @@ header("location:doctor_index.php");
   <link rel="stylesheet" href="css/style.css">
 
 </head>
-<body>
 <header>
 	<div class="header-top-bar">
 		<div class="container">
@@ -71,7 +45,7 @@ header("location:doctor_index.php");
 	</div>
 	<nav class="navbar navbar-expand-lg navigation" id="navbar">
 		<div class="container">
-		 	 <a class="navbar-brand" href="index.html">
+		 	 <a class="navbar-brand" href="index.php">
 			  	<img src="images/logo1.png" alt="" class="img-fluid" style="width:100px;height:100px;">
 			  </a>
 
@@ -82,66 +56,55 @@ header("location:doctor_index.php");
 		  <div class="collapse navbar-collapse" id="navbarmain">
 			<ul class="navbar-nav ml-auto">
 			  <li class="nav-item active">
-				<a class="nav-link" href="doctor_index.php">Home</a>
+				<a class="nav-link" href="index.php">Home</a>
 			  </li>
-              <li class="nav-item"><a class="nav-link" href="index.php">Logout</a></li>
-              
-			</ul>
 		  </div>
 		</div>
 	</nav>
 </header>
-<section class="banner">
+<section class="page-title bg-1">
+  <div class="overlay"></div>
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="block text-center">
-        <section class="appoinment section">
-  <div class="container">
-    <div class="row">
-
-      <div class="col-lg-6">
-           <div class="appoinment-wrap mt-5 mt-lg-0 pl-lg-5">
-           <h2 class="mb-2 title-color" style="color:white">Patient List</h2>
-            
-               <form id="#" class="appoinment-form" method="post" enctype="multipart/form-data" >
-			 <!--  <div class="table-responsive"-->
-                    <table class="table">
-                      <thead>
-					  
-                        <tr>
-                          <th>Name</th>
-                          <th>Phn.No.</th>
-                          <th>Message</th>
-                          <th>Medicines</th>
-						  <th>Action</th>
-                        </tr>
-                      </thead>
-					  <tbody>
-					  <?php
-				   while($row=mysqli_fetch_assoc($qry))
-				   {
-				   ?>
-						  <tr>
-							  <td><input type="text" name="nm" value="<?php echo $row['name']; ?>" ></td>
-							  <td><input type="text" value="<?php echo $row['phno']; ?>" ></td>
-							  <td><input type="text" value="<?php echo $row['message']; ?>" ></td>
-							  <td><input type="file" name="img" value="Prescription Upload"></td>
-							  <td><button name="submit" class="btn btn-primary">Send</button></td>
-						  </tr>
-					  </tbody>
-					  <?php
-				   }
-				   ?>
-					</table>
-			   
-			</form>
-            </div>
+          <span class="text-white">Contact Us</span>
+          <h1 class="text-capitalize mb-5 text-lg">Get in Touch</h1>
         </div>
       </div>
     </div>
   </div>
 </section>
+<section class="section contact-info pb-0">
+    <div class="container">
+         <div class="row">
+            <div class="col-lg-4 col-sm-6 col-md-6">
+                <div class="contact-block mb-4 mb-lg-0">
+                    <i class="icofont-live-support"></i>
+                    <h5>Call Us</h5>
+                     +823-4565-13456
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-md-6">
+                <div class="contact-block mb-4 mb-lg-0">
+                    <i class="icofont-support-faq"></i>
+                    <h5>Email Us</h5>
+                     contact@mail.com
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-md-6">
+                <div class="contact-block mb-4 mb-lg-0">
+                    <i class="icofont-location-pin"></i>
+                    <h5>Location</h5>
+                     North Main Street,Brooklyn Australia
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="google-map ">
+    <div id="map"><img src="images/googlemap.jpg" alt="" class="img-fluid" style="width:100%;height:100%;"></div>
+</div>
 <!-- footer Start -->
 <footer class="footer section gray-bg">
 	<div class="container">
