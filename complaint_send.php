@@ -1,7 +1,22 @@
 <?php
 include 'connection.php';
 session_start();
-
+$id=$_SESSION['login_id'];
+if(isset($_POST['submit']))
+{
+    $doctor=$_POST['doctor'];
+    $name=$_POST['name'];
+    $phno=$_POST['phone'];
+    $message=$_POST['message'];
+    $query=mysqli_query($conn,"select doctor_reg.doctor_id,patient_reg.patient_id from doctor_reg join patient_reg where doctor_reg.name='$doctor' and patient_reg.login_id='$id'");
+    if(mysqli_num_rows($query)>0){
+        $result=mysqli_fetch_assoc($query);
+        $doctor_id=$result['doctor_id'];
+        $patient_id=$result['patient_id'];
+        mysqli_query($conn,"insert into complaint_tb (patient_id,doctor_id,phno,message) values('$patient_id','$doctor_id','$phno','$message')");
+        header("location:patient_index.php");
+}
+}
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -65,17 +80,78 @@ session_start();
 				<a class="nav-link" href="patient_index.php">Home</a>
 			  </li>
              
-              <li class="nav-item"><a class="nav-link" href="medicine_view.php">Medicines</a></li>
-              <li class="nav-item"><a class="nav-link" href="complaint_send.php"> Add Complaint/feedback </a></li>
-               <li class="nav-item"><a class="nav-link" href="chat.php">Chat with Doctor</a></li>
                <li class="nav-item"><a class="nav-link" href="index.php">Logout</a></li>
-                  <li class="nav-item">  <a href="appointment.php" class="btn btn-main btn-round-full">Make Appointment</a>
-                  </li></ul>
+                  </ul>
 		  </div>
 		</div>
 	</nav>
 </header>
 <section class="banner">
+<section class="contact-form-wrap section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="section-title text-center">
+                    <h2 class="text-md mb-2">Feedback/Complaint</h2>
+                    <div class="divider mx-auto my-4"></div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <form id="contact-form" class="contact__form " method="post" >
+                 <!-- form message -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="alert alert-success contact__msg" style="display: none" role="alert">
+                                Your message was sent successfully.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                    <div class="col-lg-12">
+                            <div class="form-group">
+                                <select class="form-control" name="doctor" id="exampleFormControlSelect2">
+                                  <option>Select Doctors</option>
+                                  <option>Sam</option>
+                                  <option>Alex</option>
+                                  <option>Bindu</option>
+                                  <option>Joeseph</option>
+                                  <option>Anoop Menon</option>
+                                  <option>Radha devi</option>
+                                  <option>Aneesha</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <input name="name" id="name" type="text" class="form-control" placeholder="Your Full Name" >
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <input name="phone" id="phone" type="text" class="form-control" placeholder="Your Phone Number">
+                            </div>
+                        </div>
+                        
+                         
+                    </div>
+
+                    <div class="form-group-2 mb-4">
+                        <textarea name="message" id="message" class="form-control" rows="8" placeholder="Your Message"></textarea>
+                    </div>
+
+                    <div class="text-center">
+                        <input class="btn btn-main btn-round-full" name="submit" type="submit" value="Send Messege"></input>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 </section>
 <!-- footer Start -->
 <footer class="footer section gray-bg">

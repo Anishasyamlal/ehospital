@@ -1,7 +1,13 @@
 <?php
 include 'connection.php';
 session_start();
-
+$id=$_SESSION['login_id'];
+$query=mysqli_query($conn,"select patient_id from patient_reg where login_id='$id'");
+if(mysqli_num_rows($query)>0){
+    $result=mysqli_fetch_assoc($query);
+    $patient_id=$result['patient_id'];
+$qry=mysqli_query($conn,"select medicine from book_slot where patient_id='$patient_id'");
+}
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -65,17 +71,30 @@ session_start();
 				<a class="nav-link" href="patient_index.php">Home</a>
 			  </li>
              
-              <li class="nav-item"><a class="nav-link" href="medicine_view.php">Medicines</a></li>
-              <li class="nav-item"><a class="nav-link" href="complaint_send.php"> Add Complaint/feedback </a></li>
-               <li class="nav-item"><a class="nav-link" href="chat.php">Chat with Doctor</a></li>
                <li class="nav-item"><a class="nav-link" href="index.php">Logout</a></li>
-                  <li class="nav-item">  <a href="appointment.php" class="btn btn-main btn-round-full">Make Appointment</a>
-                  </li></ul>
+                  </ul>
 		  </div>
 		</div>
 	</nav>
 </header>
 <section class="banner">
+<div class="container">
+    <div class="row">
+
+      <div class="col-lg-6">
+           <div class="appoinment-wrap mt-5 mt-lg-0 pl-lg-5">
+           <h2 class="mb-2 title-color" style="color:white">My Medicines</h2>
+    <?php
+   while($row=mysqli_fetch_assoc($qry))
+   {
+       $image=$row['medicine'];
+       echo '<img src="images/'.$image.'" style="width:500px;height:450px;">';
+   }
+    ?>
+           </div>
+      </div>
+    </div>
+</div>
 </section>
 <!-- footer Start -->
 <footer class="footer section gray-bg">

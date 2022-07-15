@@ -1,6 +1,13 @@
 <?php
 include 'connection.php';
 session_start();
+$id=$_SESSION['login_id'];
+$query=mysqli_query($conn,"select doctor_id from doctor_reg where login_id='$id'");
+if(mysqli_num_rows($query)>0){
+	$result=mysqli_fetch_assoc($query);
+	$doctor_id=$result['doctor_id'];
+$qry=mysqli_query($conn,"select * from chat_to where doctor_id='$doctor_id' ");
+}
 
 ?>
 <!DOCTYPE html>
@@ -62,20 +69,65 @@ session_start();
 		  <div class="collapse navbar-collapse" id="navbarmain">
 			<ul class="navbar-nav ml-auto">
 			  <li class="nav-item active">
-				<a class="nav-link" href="patient_index.php">Home</a>
+				<a class="nav-link" href="doctor_index.php">Home</a>
 			  </li>
-             
-              <li class="nav-item"><a class="nav-link" href="medicine_view.php">Medicines</a></li>
-              <li class="nav-item"><a class="nav-link" href="complaint_send.php"> Add Complaint/feedback </a></li>
-               <li class="nav-item"><a class="nav-link" href="chat.php">Chat with Doctor</a></li>
-               <li class="nav-item"><a class="nav-link" href="index.php">Logout</a></li>
-                  <li class="nav-item">  <a href="appointment.php" class="btn btn-main btn-round-full">Make Appointment</a>
-                  </li></ul>
+              <li class="nav-item"><a class="nav-link" href="index.php">Logout</a></li>
+              
+			</ul>
 		  </div>
 		</div>
 	</nav>
 </header>
 <section class="banner">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="block text-center">
+        <section class="appoinment section">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-6">
+           <div class="appoinment-wrap mt-5 mt-lg-0 pl-lg-5">
+           <h2 class="mb-2 title-color" style="color:white">Patient List</h2>
+            
+               <form id="#" class="appoinment-form" method="post"  >
+			 <!--  <div class="table-responsive"-->
+                    <table class="table">
+                      <thead>
+					  
+                        <tr>
+                          <th>Name</th>
+                          <th>Phn.No.</th>
+                          <th>Message</th>
+                          <th>Reply</th>
+						  <th>Action</th>
+                        </tr>
+                      </thead>
+					  <tbody>
+					  <?php
+				   while($row=mysqli_fetch_assoc($qry))
+				   {
+				   ?>
+						  <tr>
+							  <td><input type="text" name="nm" value="<?php echo $row['name']; ?>" ></td>
+							  <td><input type="text" value="<?php echo $row['phno']; ?>" ></td>
+							  <td><input type="text" value="<?php echo $row['message']; ?>" ></td>
+							  <td><input type="text" name="rply" ></td>
+							  <td><button name="submit" class="btn btn-primary">Send</button></td>
+						  </tr>
+					  </tbody>
+					  <?php
+				   }
+				   ?>
+					</table>
+			   
+			</form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <!-- footer Start -->
 <footer class="footer section gray-bg">

@@ -77,7 +77,7 @@ session_start();
 			    
 			   <li class="nav-item"><a class="nav-link" href="view_patient.php">View Patient</a></li>
                <li class="nav-item"><a class="nav-link" href="request.php">Leave Request</a></li>
-               <li class="nav-item"><a class="nav-link" href="contact.html">Chat with Patient</a></li>
+               <li class="nav-item"><a class="nav-link" href="chat_reply.php">Chat with Patient</a></li>
 			</ul>
 		  </div>
 		</div>
