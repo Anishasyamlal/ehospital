@@ -1,22 +1,8 @@
 <?php
 include 'connection.php';
 session_start();
-$id=$_SESSION['login_id'];
-if(isset($_POST['submit']))
-{
-    $doctor=$_POST['doctor'];
-   $name=$_POST['name'];
-    $phno=$_POST['phone'];
-    $message=$_POST['message'];
-    $query=mysqli_query($conn,"select doctor_reg.doctor_id,patient_reg.patient_id from doctor_reg join patient_reg where doctor_reg.name='$doctor' and patient_reg.login_id='$id'");
-    if(mysqli_num_rows($query)>0){
-        $result=mysqli_fetch_assoc($query);
-        $doctor_id=$result['doctor_id'];
-        $patient_id=$result['patient_id'];
-        mysqli_query($conn,"insert into chat_to (patient_id,doctor_id,name,phno,message,reply) values('$patient_id','$doctor_id','$name','$phno','$message',0)");
-        header("location:patient_index.php");
-}
-}
+$query=mysqli_query($conn,"select * from doctor_reg");
+
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -77,81 +63,85 @@ if(isset($_POST['submit']))
 		  <div class="collapse navbar-collapse" id="navbarmain">
 			<ul class="navbar-nav ml-auto">
 			  <li class="nav-item active">
-				<a class="nav-link" href="patient_index.php">Home</a>
+				<a class="nav-link" href="admin_index.php">Home</a>
 			  </li>
-             
-               <li class="nav-item"><a class="nav-link" href="index.php">Logout</a></li>
-                  </ul>
+              <li class="nav-item"><a class="nav-link" href="index.php">Logout</a></li>
+              
+			</ul>
 		  </div>
 		</div>
 	</nav>
 </header>
 <section class="banner">
-<section class="contact-form-wrap section">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <div class="section-title text-center">
-                    <h2 class="text-md mb-2">Meet My Doctor</h2>
-                    <div class="divider mx-auto my-4"></div>
-                    
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-                <form id="contact-form" class="contact__form " method="post" >
-                 <!-- form message -->
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="alert alert-success contact__msg" style="display: none" role="alert">
-                                Your message was sent successfully.
-                            </div>
-                        </div>
-                    </div>
+  <div class="container">
+    <div class="row">
+      
+        
+        <section class="approve" style="position: absolute;top:20%;left:0px" >
+ 
 
-                    <div class="row">
-                    <div class="col-lg-12">
-                            <div class="form-group">
-                                <select class="form-control" name="doctor" id="exampleFormControlSelect2">
-                                  <option>Select Doctors</option>
-                                  <option>Sam</option>
-                                  <option>Alex</option>
-                                  <option>Bindu</option>
-                                  <option>Joeseph</option>
-                                  <option>Anoop Menon</option>
-                                  <option>Radha devi</option>
-                                  <option>Aneesha</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <input name="name" id="name" type="text" class="form-control" placeholder="Your Full Name" >
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <input name="phone" id="phone" type="text" class="form-control" placeholder="Your Phone Number">
-                            </div>
-                        </div>
-                        
+           <h2 class="mb-2 title-color" style="color:white">Approve Doctors</h2>
+            
+               <form id="#" method="post"  >
+			 <!--  <div class="table-responsive"-->
+			 
+                    <table>
+                      <thead>
+					  
+                        <tr>
+							
+                          <th>Name</th> 
+                          <th>Email</th> 
+                          <th>Phn.No.</th>
+                          <th>Date of Birth</th> 
+                          <th>Address</th>
+                          <th>Qualification</th> 
+                          <th>Department</th> 
+                          <th>Approve</th> 
+						  <th>Action</th>
+                          
                          
-                    </div>
+                        </tr>
+                      </thead>
+					  <tbody>
+					  <?php
+				   while($row=mysqli_fetch_assoc($query))
+				   {
+				   ?>
+						  <tr>
+						  
+							  <td><input type="text" name="nm" value="<?php echo $row['name']; ?>" ></td>
+                              <td><input type="text" name="email" value="<?php echo $row['email']; ?>" ></td>
+							  <td><input type="text" value="<?php echo $row['phno']; ?>" ></td>
+                              <td><input type="text"  value="<?php echo $row['dob']; ?>" ></td>
+							  <td><input type="text"  value="<?php echo $row['address']; ?>" ></td>
+							  <td><input type="text" value="<?php echo $row['qualification']; ?>" ></td>
+                              <td><input type="text"  value="<?php echo $row['department']; ?>" ></td>
+							  <td><input type="text"  value="<?php echo $row['approve']; ?>" ></td>
+							  <td><a href="edit_doctor.php?edit_id=<?php echo $row['doctor_id']; ?>"class="btn btn-primary" name="edit">Approve</a></td>
+							  <!-- <?php 
+							  $approve=$row['approve'];
+							  
+                             if($approve=0){?>
+                              <td><a href="edit_doctor.php?edit_id=<?php echo $row['doctor_id']; ?>"class="btn btn-primary" name="edit">Approve</a></td>
+<?php
+}
+							  else{ ?>
+								<td><a href="edit_doctor.php?edit_id=<?php echo $row['doctor_id']; ?>"class="btn btn-primary" name="edit">Approved</a></td>
+						<?php	 }?> -->
+						  </tr>
+					  </tbody>
+					  <?php
+				   }
+				   ?>
+					</table>
+			 
+			</form>
 
-                    <div class="form-group-2 mb-4">
-                        <textarea name="message" id="message" class="form-control" rows="8" placeholder="Your Message"></textarea>
-                    </div>
-
-                    <div class="text-center">
-                        <input class="btn btn-main btn-round-full" name="submit" type="submit" value="Send Messege"></input>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 </section>
+</div>
+    </div>
+
 </section>
 <!-- footer Start -->
 <footer class="footer section gray-bg">

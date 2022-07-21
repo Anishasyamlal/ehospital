@@ -13,7 +13,7 @@ if(isset($_POST['submit']))
         $result=mysqli_fetch_assoc($query);
         $doctor_id=$result['doctor_id'];
         $patient_id=$result['patient_id'];
-        mysqli_query($conn,"insert into complaint_tb (patient_id,doctor_id,phno,message) values('$patient_id','$doctor_id','$phno','$message')");
+        mysqli_query($conn,"insert into complaint_tb (patient_id,doctor_id,name,phno,message) values('$patient_id','$doctor_id','$name','$phno','$message')");
         header("location:patient_index.php");
 }
 }
@@ -50,7 +50,7 @@ if(isset($_POST['submit']))
 				<div class="col-lg-6">
 					<ul class="top-bar-info list-inline-item pl-0 mb-0">
 						<li class="list-inline-item"><a href="mailto:support@gmail.com"><i class="icofont-support-faq mr-2"></i>support@Sanjivani.com</a></li>
-						<li class="list-inline-item"><i class="icofont-location-pin mr-2"></i>Address Ta-134/A, New York, USA </li>
+						<li class="list-inline-item"><i class="icofont-location-pin mr-2"></i>Address  W7WM+P3M, Willingdon Island, Kochi, Kerala 682004</li>
 					</ul>
 				</div>
 				<div class="col-lg-6">

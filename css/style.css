@@ -483,7 +483,7 @@ a:focus {
 }
 
 .banner .block {
-  padding: 80px 0px 160px;
+  padding: 40px 0px 160px;
 }
 
 .banner .block h1 {
@@ -591,7 +591,7 @@ a:focus {
 }
 
 .appoinment-form {
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 .appoinment-form .form-control {
@@ -1060,4 +1060,3 @@ a:focus {
 .labels {
   font-size: 11px
 }
-

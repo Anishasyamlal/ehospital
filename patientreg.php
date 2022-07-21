@@ -99,35 +99,35 @@ header("location:index.php");
                     <div class="row">
                          <div class="col-lg-6">
                             <div class="form-group">
-                                <input name="name" id="" type="text" class="form-control" placeholder="Your Name">
+                                <input name="name" id="" type="text" class="form-control" placeholder="Your Name" required="">
                             </div>
                         </div>
 
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <input name="age" id="" type="text" class="form-control" placeholder="Age">
+                                <input name="age" id="" type="text" class="form-control" placeholder="Age" required="">
                             </div>
                         </div>
                         
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <input name="phno" id="" type="text" class="form-control" placeholder="Phone number">
+                                <input name="phno" id="" type="text" class="form-control" placeholder="Phone number" required="">
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                        <textarea name="address" id="message" class="form-control" rows="6" placeholder="Your Address"></textarea>
+                        <textarea name="address" id="message" class="form-control" rows="6" placeholder="Your Address" required=""></textarea>
                     </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <input name="user" id="" type="text" class="form-control" placeholder="Username">
+                                <input name="user" id="" type="text" class="form-control" placeholder="Username" required="">
                             </div>
                         </div>
 
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <input name="pswd" id="" type="password" class="form-control" placeholder="Password">
+                                <input name="pswd" id="" type="password" class="form-control" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" minlength="8">
                             </div>
                         </div>
                     </div>

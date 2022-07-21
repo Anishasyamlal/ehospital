@@ -55,7 +55,7 @@ header("location:patient_index.php");
 				<div class="col-lg-6">
 					<ul class="top-bar-info list-inline-item pl-0 mb-0">
 						<li class="list-inline-item"><a href="mailto:support@gmail.com"><i class="icofont-support-faq mr-2"></i>support@Sanjivani.com</a></li>
-						<li class="list-inline-item"><i class="icofont-location-pin mr-2"></i>Address Ta-134/A, New York, USA </li>
+						<li class="list-inline-item"><i class="icofont-location-pin mr-2"></i>Address  W7WM+P3M, Willingdon Island, Kochi, Kerala 682004 </li>
 					</ul>
 				</div>
 				<div class="col-lg-6">
@@ -131,7 +131,7 @@ header("location:patient_index.php");
                     <div class="row">
                          <div class="col-lg-6">
                             <div class="form-group">
-                                <select class="form-control" name="department" id="exampleFormControlSelect1">
+                                <select class="form-control" name="department" id="exampleFormControlSelect1" required="">
                                   <option>Choose Department</option>
                                   <option>General Medicine</option>
                                   <option>Gynaecology</option>
@@ -142,7 +142,7 @@ header("location:patient_index.php");
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <select class="form-control" name="doctor" id="exampleFormControlSelect2">
+                                <select class="form-control" name="doctor" id="exampleFormControlSelect2" required="">
                                   <option>Select Doctors</option>
                                   <option>Sam</option>
                                   <option>Alex</option>
@@ -157,24 +157,24 @@ header("location:patient_index.php");
 
                          <div class="col-lg-6">
                             <div class="form-group">
-                                <input name="date" id="date" type="date" class="form-control" placeholder="dd/mm/yyyy">
+                                <input name="date" id="date" type="date" class="form-control" placeholder="dd/mm/yyyy" required="">
                             </div>
                         </div>
 
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <input name="time" id="time" type="text" class="form-control" placeholder="Time">
+                                <input name="time" id="time" type="time" class="form-control" placeholder="Time" required="">
                             </div>
                         </div>
                          <div class="col-lg-6">
                             <div class="form-group">
-                                <input name="name" id="name" type="text" class="form-control" placeholder="Full Name">
+                                <input name="name" id="name" type="text" class="form-control" placeholder="Full Name" required="">
                             </div>
                         </div>
 
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <input name="phone" id="phone" type="text" class="form-control" placeholder="Phone Number">
+                                <input name="phone" id="phone" type="text" class="form-control" placeholder="Phone Number" required="">
                             </div>
                         </div>
                         <div class="col-lg-12">

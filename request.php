@@ -103,7 +103,7 @@ header("location:doctor_index.php");
                     <div class="row">
                          <div class="col-lg-6">
                             <div class="form-group">
-                                <input name="name" id="" type="text" class="form-control" placeholder="Your Name">
+                                <input name="name" id="" type="text" class="form-control" placeholder="Your Name" required="">
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -119,19 +119,19 @@ header("location:doctor_index.php");
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <input name="leave1" id="" type="date" class="form-control" placeholder="Leave Date">
+                                <input name="leave1" id="" type="date" class="form-control" placeholder="Leave Date" required="">
                             </div>
                         </div>
 
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <input name="leave2" id="" type="date" class="form-control" placeholder="Return Date">
+                                <input name="leave2" id="" type="date" class="form-control" placeholder="Return Date" required="">
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-12">
                             <div class="form-group">
-                        <textarea name="reason" id="" class="form-control" rows="4" placeholder="Reason for Leave"></textarea>
+                        <textarea name="reason" id="" class="form-control" rows="4" placeholder="Reason for Leave" required=""></textarea>
                     </div>
                         </div>
                     

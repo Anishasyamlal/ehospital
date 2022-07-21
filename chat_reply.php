@@ -8,7 +8,13 @@ if(mysqli_num_rows($query)>0){
 	$doctor_id=$result['doctor_id'];
 $qry=mysqli_query($conn,"select * from chat_to where doctor_id='$doctor_id' ");
 }
-
+if(isset($_POST['submit']))
+{
+    $name=$_POST['nm'];
+    $rply=$_POST['rply'];
+mysqli_query($conn,"update chat_to set reply='$rply' where name='$name'");
+header("location:doctor_index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -42,7 +48,7 @@ $qry=mysqli_query($conn,"select * from chat_to where doctor_id='$doctor_id' ");
 				<div class="col-lg-6">
 					<ul class="top-bar-info list-inline-item pl-0 mb-0">
 						<li class="list-inline-item"><a href="mailto:support@gmail.com"><i class="icofont-support-faq mr-2"></i>support@Sanjivani.com</a></li>
-						<li class="list-inline-item"><i class="icofont-location-pin mr-2"></i>Address Ta-134/A, New York, USA </li>
+						<li class="list-inline-item"><i class="icofont-location-pin mr-2"></i>Address  W7WM+P3M, Willingdon Island, Kochi, Kerala 682004</li>
 					</ul>
 				</div>
 				<div class="col-lg-6">
@@ -113,7 +119,7 @@ $qry=mysqli_query($conn,"select * from chat_to where doctor_id='$doctor_id' ");
 							  <td><input type="text" name="nm" value="<?php echo $row['name']; ?>" ></td>
 							  <td><input type="text" value="<?php echo $row['phno']; ?>" ></td>
 							  <td><input type="text" value="<?php echo $row['message']; ?>" ></td>
-							  <td><input type="text" name="rply" ></td>
+							  <td><input type="text" name="rply" value="<?php echo $row['reply']; ?>"></td>
 							  <td><button name="submit" class="btn btn-primary">Send</button></td>
 						  </tr>
 					  </tbody>

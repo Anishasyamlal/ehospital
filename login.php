@@ -140,13 +140,13 @@ if(mysqli_num_rows($query)>0){
                         </div>
                          <div class="col-sm-12">
                             <div class="form-group">
-                                <input name="user" id="" type="text" class="form-control" placeholder="Username">
+                                <input name="user" id="" type="text" class="form-control" placeholder="Username" required="">
                             </div>
                         </div>
 
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <input name="pswd" id="" type="password" class="form-control" placeholder="Password">
+                                <input name="pswd" id="" type="password" class="form-control" placeholder="Password" required="">
                             </div>
                         </div>
                     </div>

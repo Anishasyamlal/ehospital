@@ -35,7 +35,7 @@ session_start();
 				<div class="col-lg-6">
 					<ul class="top-bar-info list-inline-item pl-0 mb-0">
 						<li class="list-inline-item"><a href="mailto:support@gmail.com"><i class="icofont-support-faq mr-2"></i>support@Sanjivani.com</a></li>
-						<li class="list-inline-item"><i class="icofont-location-pin mr-2"></i>Address Ta-134/A, New York, USA </li>
+						<li class="list-inline-item"><i class="icofont-location-pin mr-2"></i>Address  W7WM+P3M, Willingdon Island, Kochi, Kerala 682004 </li>
 					</ul>
 				</div>
 				<div class="col-lg-6">
@@ -75,7 +75,18 @@ session_start();
 		</div>
 	</nav>
 </header>
-<section class="banner">
+<section class="section cta-page">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-7">
+				<div class="cta-content">
+					<div class="divider mb-4"></div>
+					<h2 class="mb-5 text-lg">We are pleased to offer you the <span class="title-color">chance to have the healthy</span></h2>
+					
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
 <!-- footer Start -->
 <footer class="footer section gray-bg">

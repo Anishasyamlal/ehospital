@@ -89,14 +89,14 @@
                 <div class="contact-block mb-4 mb-lg-0">
                     <i class="icofont-support-faq"></i>
                     <h5>Email Us</h5>
-                     contact@mail.com
+                     sanjivani@mail.com
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6 col-md-6">
                 <div class="contact-block mb-4 mb-lg-0">
                     <i class="icofont-location-pin"></i>
                     <h5>Location</h5>
-                     North Main Street,Brooklyn Australia
+					W7WM+P3M, Willingdon Island, Kochi, Kerala 682004
                 </div>
             </div>
         </div>

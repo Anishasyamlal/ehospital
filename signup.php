@@ -49,7 +49,7 @@ header("location:index.php");
 				<div class="col-lg-6">
 					<ul class="top-bar-info list-inline-item pl-0 mb-0">
 						<li class="list-inline-item"><a href="mailto:support@gmail.com"><i class="icofont-support-faq mr-2"></i>support@Sanjivani.com</a></li>
-						<li class="list-inline-item"><i class="icofont-location-pin mr-2"></i>Address Ta-134/A, New York, USA </li>
+						<li class="list-inline-item"><i class="icofont-location-pin mr-2"></i>Address  W7WM+P3M, Willingdon Island, Kochi, Kerala 682004 </li>
 					</ul>
 				</div>
 				<div class="col-lg-6">
@@ -103,13 +103,13 @@ header("location:index.php");
                     <div class="row">
                          <div class="col-lg-6">
                             <div class="form-group">
-                                <input name="name" id="" type="text" class="form-control" placeholder="Your Name">
+                                <input name="name" id="" type="text" class="form-control" placeholder="Your Name" required="">
                             </div>
                         </div>
 
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <input name="mail" id="" type="email" class="form-control" placeholder="Email Address">
+                                <input name="mail" id="" type="email" class="form-control" placeholder="Email Address" >
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -119,22 +119,22 @@ header("location:index.php");
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <input name="phno" id="" type="text" class="form-control" placeholder="Phone number">
+                                <input name="phno" id="" type="text" class="form-control" placeholder="Phone number" required="">
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                        <textarea name="address" id="" class="form-control" rows="4" placeholder="Your Address"></textarea>
+                        <textarea name="address" id="" class="form-control" rows="4" placeholder="Your Address" required=""></textarea>
                     </div>
                         </div>
                     <div class="col-lg-6">
                             <div class="form-group">
-                                <input name="qualification" id="" type="text" class="form-control" placeholder="Qualification">
+                                <input name="qualification" id="" type="text" class="form-control" placeholder="Qualification" required="">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <select class="form-control" name="department" id="exampleFormControlSelect1">
+                                <select class="form-control" name="department" id="exampleFormControlSelect1" required="">
                                   <option>Choose Department</option>
                                   <option>General Medicine</option>
                                   <option>Gynaecology</option>
@@ -146,13 +146,13 @@ header("location:index.php");
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <input name="user" id="" type="text" class="form-control" placeholder="Username">
+                                <input name="user" id="" type="text" class="form-control" placeholder="Username" required="">
                             </div>
                         </div>
 
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <input name="pswd" id="" type="password" class="form-control" placeholder="Password">
+                                <input name="pswd" id="" type="password" class="form-control" placeholder="Password" required="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" minlength="8">
                             </div>
                         </div>
                     </div>
