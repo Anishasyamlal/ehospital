@@ -67,7 +67,7 @@ session_start();
              
               <li class="nav-item"><a class="nav-link" href="medicine_view.php">Medicines</a></li>
               <li class="nav-item"><a class="nav-link" href="complaint_send.php"> Add Complaint/feedback </a></li>
-               <li class="nav-item"><a class="nav-link" href="chat.php">Chat with Doctor</a></li>
+               <li class="nav-item"><a class="nav-link" href="reply_to.php">Chat with Doctor</a></li>
                <li class="nav-item"><a class="nav-link" href="index.php">Logout</a></li>
                   <li class="nav-item">  <a href="appointment.php" class="btn btn-main btn-round-full">Make Appointment</a>
                   </li></ul>

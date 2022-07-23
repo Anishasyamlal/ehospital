@@ -6,7 +6,7 @@ $query=mysqli_query($conn,"select doctor_id from doctor_reg where login_id='$id'
 if(mysqli_num_rows($query)>0){
 	$result=mysqli_fetch_assoc($query);
 	$doctor_id=$result['doctor_id'];
-	$qry=mysqli_query($conn,"select * from book_slot where doctor_id='$doctor_id'");
+	$qry=mysqli_query($conn,"select * from book_slot where doctor_id='$doctor_id' and medicine='0'");
 }
 if(isset($_POST['submit']))
 {

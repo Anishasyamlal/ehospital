@@ -2,18 +2,11 @@
 include 'connection.php';
 session_start();
 $id=$_SESSION['login_id'];
-$query=mysqli_query($conn,"select doctor_id from doctor_reg where login_id='$id'");
+$query=mysqli_query($conn,"select patient_id from patient_reg where login_id='$id'");
 if(mysqli_num_rows($query)>0){
 	$result=mysqli_fetch_assoc($query);
-	$doctor_id=$result['doctor_id'];
-$qry=mysqli_query($conn,"select * from chat_to where doctor_id='$doctor_id' and reply='0' ");
-}
-if(isset($_POST['submit']))
-{
-    $name=$_POST['nm'];
-    $rply=$_POST['rply'];
-mysqli_query($conn,"update chat_to set reply='$rply' where name='$name'");
-header("location:doctor_index.php");
+	$patient_id=$result['patient_id'];
+$qry=mysqli_query($conn,"select * from chat_to where patient_id='$patient_id' ");
 }
 ?>
 <!DOCTYPE html>
@@ -48,7 +41,7 @@ header("location:doctor_index.php");
 				<div class="col-lg-6">
 					<ul class="top-bar-info list-inline-item pl-0 mb-0">
 						<li class="list-inline-item"><a href="mailto:support@gmail.com"><i class="icofont-support-faq mr-2"></i>support@Sanjivani.com</a></li>
-						<li class="list-inline-item"><i class="icofont-location-pin mr-2"></i>Address  W7WM+P3M, Willingdon Island, Kochi, Kerala 682004</li>
+						<li class="list-inline-item"><i class="icofont-location-pin mr-2"></i>Address  W7WM+P3M, Willingdon Island, Kochi, Kerala 682004 </li>
 					</ul>
 				</div>
 				<div class="col-lg-6">
@@ -75,11 +68,11 @@ header("location:doctor_index.php");
 		  <div class="collapse navbar-collapse" id="navbarmain">
 			<ul class="navbar-nav ml-auto">
 			  <li class="nav-item active">
-				<a class="nav-link" href="doctor_index.php">Home</a>
+				<a class="nav-link" href="patient_index.php">Home</a>
 			  </li>
-              <li class="nav-item"><a class="nav-link" href="index.php">Logout</a></li>
-              
-			</ul>
+             
+               <li class="nav-item"><a class="nav-link" href="index.php">Logout</a></li>
+                  </ul>
 		  </div>
 		</div>
 	</nav>
@@ -87,55 +80,41 @@ header("location:doctor_index.php");
 <section class="banner">
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
-        <div class="block text-center">
-        <section class="appoinment section">
-  <div class="container">
-    <div class="row">
+      
+        
+        <section class="approve" style="position: absolute;top:20%;left:200px" >
+ 
 
-      <div class="col-lg-6">
-           <div class="appoinment-wrap mt-5 mt-lg-0 pl-lg-5">
-           <h2 class="mb-2 title-color" style="color:white">Patient List</h2>
+           <h2 class="mb-2 title-color" style="color:white">Reply From My Doctor</h2>
             
-               <form id="#" class="appoinment-form" method="post"  >
-			 <!--  <div class="table-responsive"-->
-                    <table class="table">
-                      <thead>
-					  
-                        <tr>
-                          <th>Name</th>
-                          <th>Phn.No.</th>
-                          <th>Message</th>
-                          <th>Reply</th>
-						  <th>Action</th>
-                        </tr>
-                      </thead>
-					  <tbody>
-					  <?php
+               <form id="#" method="post"  >
+			
+			 
+                    <table>
+                    <?php
 				   while($row=mysqli_fetch_assoc($qry))
 				   {
 				   ?>
-						  <tr>
-							  <td><input type="text" name="nm" value="<?php echo $row['name']; ?>" ></td>
-							  <td><input type="text" value="<?php echo $row['phno']; ?>" ></td>
-							  <td><input type="text" value="<?php echo $row['message']; ?>" ></td>
-							  <td><input type="text" name="rply" value="<?php echo $row['reply']; ?>"></td>
-							  <td><button name="submit" class="btn btn-primary">Send</button></td>
-						  </tr>
-					  </tbody>
-					  <?php
+                      
+					  
+                        <tr><th>Message</th> 
+                          <th>Reply</th></tr>
+                      
+					 <tr><td><input type="text" name="msg" value="<?php echo $row['message']; ?>" ></td>
+                     <td><input type="text" name="reply" value="<?php echo $row['reply']; ?>" ></td> </tr>
+                     <tr><th colspan=2><a href="chat.php" class="btn btn-primary">Add New</a></th></tr>
+                      <?php
 				   }
 				   ?>
 					</table>
-			   
+			 
 			</form>
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
 </section>
-<!-- footer Start -->
+</div>
+    </div>
+
+</section>
 <footer class="footer section gray-bg">
 	<div class="container">
 		<div class="row">
