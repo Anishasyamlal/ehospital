@@ -53,7 +53,21 @@ if(mysqli_num_rows($query)>0){
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
-
+<script>
+	function validate(){
+		var name=document.getElementById('name').value;
+		var pswd=document.getElementById('pswd').value;
+		if(namee==""){
+			document.getElementById('sp1').innerHTML="Enter value";
+		}
+		if(user==""){
+			document.getElementById('sp2').innerHTML="Enter value";
+		}
+	}
+	function clrmsg(sp){
+		document.getElementById('sp').innerHTML="";
+	}
+</script>
 </head>
 <body>
 <header>
@@ -140,19 +154,21 @@ if(mysqli_num_rows($query)>0){
                         </div>
                          <div class="col-sm-12">
                             <div class="form-group">
-                                <input name="user" id="" type="text" class="form-control" placeholder="Username" required="">
-                            </div>
+                                <input name="user" id="name" type="text" class="form-control" placeholder="Username" onkeyup="clrmsg('sp1')" required="">  
+                            <span id="sp1" style="color:red;"></span>
+							</div>
                         </div>
 
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <input name="pswd" id="" type="password" class="form-control" placeholder="Password" required="">
-                            </div>
+                                <input name="pswd" id="pswd" type="password" class="form-control" placeholder="Password" onkeyup="clrmsg('sp2')" required="" >
+								<span id="sp2" style="color:red;"></span>
+							</div>
                         </div>
                     </div>
                     
 
-                    <button class="btn btn-main btn-round-full btn-success" name="log" >Login<i class="icofont-simple-right ml-2"></i></button><br>
+                    <button class="btn btn-main btn-round-full btn-success" onclick="return validate()" name="log" >Login<i class="icofont-simple-right ml-2"></i></button><br>
                
                 </form>
             </div>
