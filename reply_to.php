@@ -8,6 +8,7 @@ if(mysqli_num_rows($query)>0){
 	$patient_id=$result['patient_id'];
 $qry=mysqli_query($conn,"select * from chat_to where patient_id='$patient_id' ");
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -70,7 +71,9 @@ $qry=mysqli_query($conn,"select * from chat_to where patient_id='$patient_id' ")
 			  <li class="nav-item active">
 				<a class="nav-link" href="patient_index.php">Home</a>
 			  </li>
-             
+			  <li class="nav-item active">
+				<a class="nav-link" href="chat.php">Add New</a>
+			  </li>
                <li class="nav-item"><a class="nav-link" href="index.php">Logout</a></li>
                   </ul>
 		  </div>

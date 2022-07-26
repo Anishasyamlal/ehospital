@@ -17,6 +17,7 @@ if(isset($_POST['submit']))
         header("location:patient_index.php");
 }
 }
+$q=mysqli_query($conn,"select * from doctor_reg");
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -114,14 +115,16 @@ if(isset($_POST['submit']))
                     <div class="col-lg-12">
                             <div class="form-group">
                                 <select class="form-control" name="doctor" id="exampleFormControlSelect2">
+									
+									
                                   <option>Select Doctors</option>
-                                  <option>Sam</option>
-                                  <option>Alex</option>
-                                  <option>Bindu</option>
-                                  <option>Joeseph</option>
-                                  <option>Anoop Menon</option>
-                                  <option>Radha devi</option>
-                                  <option>Aneesha</option>
+								  <?php
+									while($row=mysqli_fetch_assoc($q)){
+										?>
+                                  <option><?php echo $row['name']; ?></option>
+                                  <?php
+									}
+									?>
                                 </select>
                             </div>
                         </div>

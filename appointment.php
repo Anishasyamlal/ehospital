@@ -2,6 +2,7 @@
 include 'connection.php';
 session_start();
 $id=$_SESSION['login_id'];
+$qry=mysqli_query($conn,"select * from doctor_reg");
 if(isset($_POST['sub']))
 {
   $name=$_POST['name'];
@@ -144,13 +145,14 @@ header("location:patient_index.php");
                             <div class="form-group">
                                 <select class="form-control" name="doctor" id="exampleFormControlSelect2" required="">
                                   <option>Select Doctors</option>
-                                  <option>Sam</option>
-                                  <option>Alex</option>
-                                  <option>Bindu</option>
-                                  <option>Joeseph</option>
-                                  <option>Anoop Menon</option>
-                                  <option>Radha devi</option>
-                                  <option>Aneesha</option>
+                                  <?php 
+                                  while($row=mysqli_fetch_assoc($qry)){
+
+                                 ?>
+                                  <option><?php echo $row['name'];?></option>
+                                  <?php
+                                  }
+                                  ?>
                                 </select>
                             </div>
                         </div>

@@ -53,7 +53,7 @@ if(mysqli_num_rows($query)>0){
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
-<script>
+<!-- <script>
 	function validate(){
 		var name=document.getElementById('name').value;
 		var pswd=document.getElementById('pswd').value;
@@ -66,8 +66,9 @@ if(mysqli_num_rows($query)>0){
 	}
 	function clrmsg(sp){
 		document.getElementById('sp').innerHTML="";
+
 	}
-</script>
+</script> -->
 </head>
 <body>
 <header>
@@ -154,15 +155,15 @@ if(mysqli_num_rows($query)>0){
                         </div>
                          <div class="col-sm-12">
                             <div class="form-group">
-                                <input name="user" id="name" type="text" class="form-control" placeholder="Username" onkeyup="clrmsg('sp1')" required="">  
-                            <span id="sp1" style="color:red;"></span>
+                                <input name="user" id="name" type="text" class="form-control" placeholder="Username"  required="">  
+                            <!-- <span id="sp1" style="color:red;"></span> -->
 							</div>
                         </div>
 
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <input name="pswd" id="pswd" type="password" class="form-control" placeholder="Password" onkeyup="clrmsg('sp2')" required="" >
-								<span id="sp2" style="color:red;"></span>
+                                <input name="pswd" id="pswd" type="password" class="form-control" placeholder="Password"  required="" >
+								<!-- <span id="sp2" style="color:red;"></span> -->
 							</div>
                         </div>
                     </div>
