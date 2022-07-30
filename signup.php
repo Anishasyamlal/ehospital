@@ -13,9 +13,10 @@ if(isset($_POST['submit']))
 	$pswd=$_POST['pswd'];
 	mysqli_query($conn,"insert into login_tb (type,username,password) values ('doctor','$user','$pswd')");
 	$id=mysqli_insert_id($conn);
-	mysqli_query($conn,"INSERT INTO doctor_reg(login_id,name,email,phno,dob,address,qualification,department,approve) VALUES('$id','$name','$email','$phno','$dob','$address','$qualification','$department','0')");
+	mysqli_query($conn,"insert into doctor_reg(login_id,name,email,phno,dob,address,qualification,department,approve) values('$id','$name','$email','$phno','$dob','$address','$qualification','$department','0')");
 header("location:index.php");
 }
+$qry=mysqli_query($conn,"select * from department_tb");
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -109,7 +110,7 @@ header("location:index.php");
 
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <input name="mail" id="" type="email" class="form-control" placeholder="Email Address" >
+                                <input name="mail" id="" type="email" class="form-control" placeholder="Email Address" required="">
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -119,7 +120,7 @@ header("location:index.php");
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <input name="phno" id="" type="text" class="form-control" placeholder="Phone number" required="">
+                                <input name="phno" id="" type="text" class="form-control" placeholder="Phone number" required="" pattern="[0-9]{10}">
                             </div>
                         </div>
                         <div class="col-lg-12">
@@ -136,10 +137,14 @@ header("location:index.php");
                             <div class="form-group">
                                 <select class="form-control" name="department" id="exampleFormControlSelect1" required="">
                                   <option>Choose Department</option>
-                                  <option>General Medicine</option>
-                                  <option>Gynaecology</option>
-                                  <option>Paediatrics</option>
-                                  <option>Obstetrics</option>
+								  <?php 
+                                  while($row=mysqli_fetch_assoc($qry)){
+
+                                 ?>
+                                  <option><?php echo $row['name'];?></option>
+                                  <?php
+                                  }
+                                  ?>
 
                                 </select>
                             </div>

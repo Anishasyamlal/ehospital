@@ -6,15 +6,9 @@ $query=mysqli_query($conn,"select doctor_id from doctor_reg where login_id='$id'
 if(mysqli_num_rows($query)>0){
 	$result=mysqli_fetch_assoc($query);
 	$doctor_id=$result['doctor_id'];
-$qry=mysqli_query($conn,"select * from chat_to where doctor_id='$doctor_id' and reply='0' ");
+$qry=mysqli_query($conn,"select * from chat_to where doctor_id='$doctor_id' ");
 }
-if(isset($_POST['submit']))
-{
-    $name=$_POST['nm'];
-    $rply=$_POST['rply'];
-mysqli_query($conn,"update chat_to set reply='$rply' where name='$name'");
-header("location:doctor_index.php");
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -38,7 +32,12 @@ header("location:doctor_index.php");
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
-
+  <style>
+	table,tr, th, td {
+  border: 2px solid blue;
+  border-collapse: collapse;
+}
+</style>
 </head>
 <body>
 <header>
@@ -99,14 +98,13 @@ header("location:doctor_index.php");
             
                <form id="#" class="appoinment-form" method="post"  >
 			 <!--  <div class="table-responsive"-->
-                    <table class="table">
+                    <table >
                       <thead>
 					  
                         <tr>
                           <th>Name</th>
                           <th>Phn.No.</th>
                           <th>Message</th>
-                          <th>Reply</th>
 						  <th>Action</th>
                         </tr>
                       </thead>
@@ -116,11 +114,18 @@ header("location:doctor_index.php");
 				   {
 				   ?>
 						  <tr>
-							  <td><input type="text" name="nm" value="<?php echo $row['name']; ?>" ></td>
-							  <td><input type="text" value="<?php echo $row['phno']; ?>" ></td>
-							  <td><input type="text" value="<?php echo $row['message']; ?>" ></td>
-							  <td><input type="text" name="rply" value="<?php echo $row['reply']; ?>"></td>
-							  <td><button name="submit" class="btn btn-primary">Send</button></td>
+							  <td><?php echo $row['name']; ?></td>
+							  <td><?php echo $row['phno']; ?></td>
+							  <td><?php echo $row['message']; ?></td>
+							  
+							  <?php
+                               if($row['status']==0){ ?>
+                              <td><a href="reply.php?edit_id=<?php echo $row['patient_id']; ?>" class="btn btn-danger">Pending</a></td>
+							 <?php }
+							 else{ ?>
+                             <td><a href="" class="btn btn-success">Reply Send</a></td>
+							 <?php } ?>
+							  
 						  </tr>
 					  </tbody>
 					  <?php

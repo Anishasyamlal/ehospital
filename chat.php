@@ -13,7 +13,7 @@ if(isset($_POST['submit']))
         $result=mysqli_fetch_assoc($query);
         $doctor_id=$result['doctor_id'];
         $patient_id=$result['patient_id'];
-        mysqli_query($conn,"insert into chat_to (patient_id,doctor_id,name,phno,message,reply) values('$patient_id','$doctor_id','$name','$phno','$message',0)");
+        mysqli_query($conn,"insert into chat_to (patient_id,doctor_id,name,phno,message,reply,status) values('$patient_id','$doctor_id','$name','$phno','$message',0,0)");
         header("location:patient_index.php");
 }
 }

@@ -3,6 +3,7 @@ include 'connection.php';
 session_start();
 $id=$_SESSION['login_id'];
 $query=mysqli_query($conn,"select * from patient_reg ");
+
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -26,7 +27,13 @@ $query=mysqli_query($conn,"select * from patient_reg ");
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
-
+  <style>
+	table,tr, th, td {
+  border: 2px solid blue;
+  border-collapse: collapse;
+  column-width: 100px;
+}
+</style>
 </head>
 <body>
 <header>
@@ -87,7 +94,7 @@ $query=mysqli_query($conn,"select * from patient_reg ");
             
                <form id="#" class="appoinment-form" method="post" enctype="multipart/form-data" >
 			 <!--  <div class="table-responsive"-->
-                    <table class="table">
+                    <table >
                       <thead>
 					  
                         <tr>
@@ -104,10 +111,10 @@ $query=mysqli_query($conn,"select * from patient_reg ");
 				   {
 				   ?>
 						  <tr>
-							  <td><input type="text" name="nm" value="<?php echo $row['name']; ?>" ></td>
-                              <td><input type="text" value="<?php echo $row['age']; ?>" ></td>
-							  <td><input type="text" value="<?php echo $row['phno']; ?>" ></td>
-							  <td><input type="text" value="<?php echo $row['address']; ?>" ></td>
+							  <td><?php echo $row['name']; ?></td>
+                              <td><?php echo $row['age']; ?></td>
+							  <td><?php echo $row['phno']; ?></td>
+							  <td><?php echo $row['address']; ?></td>
 							 
 						  </tr>
 					  </tbody>

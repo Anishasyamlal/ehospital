@@ -26,7 +26,13 @@ $query=mysqli_query($conn,"select * from complaint_tb");
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
-
+  <style>
+	table,tr, th, td {
+  border: 2px solid blue;
+  border-collapse: collapse;
+  column-width: 100px;
+}
+</style>
 </head>
 <body>
 <header>
@@ -87,7 +93,7 @@ $query=mysqli_query($conn,"select * from complaint_tb");
             
                <form id="#" class="appoinment-form" method="post" >
 			 <!--  <div class="table-responsive"-->
-                    <table class="table">
+                    <table>
                       <thead>
 					  
                         <tr>
@@ -103,9 +109,9 @@ $query=mysqli_query($conn,"select * from complaint_tb");
 				   {
 				   ?>
 						  <tr>
-							  <td><input type="text" name="nm" value="<?php echo $row['name']; ?>" ></td>
-							  <td><input type="text" value="<?php echo $row['phno']; ?>" ></td>
-							  <td><input type="text" value="<?php echo $row['message']; ?>" ></td>
+							  <td><?php echo $row['name']; ?></td>
+							  <td><?php echo $row['phno']; ?></td>
+							  <td><?php echo $row['message']; ?></td>
 							 
 						  </tr>
 					  </tbody>

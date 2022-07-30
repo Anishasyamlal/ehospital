@@ -25,7 +25,12 @@ $query=mysqli_query($conn,"select * from request_tb");
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
-
+  <style>
+	table,tr, th, td {
+  border: 1px solid blue;
+  border-collapse: collapse;
+}
+</style>
 </head>
 <body>
 <header>
@@ -97,7 +102,7 @@ $query=mysqli_query($conn,"select * from request_tb");
                           <th>Leave_From</th>
                           <th>Leave_To</th> 
                           <th>Reason</th>
-                          <th>Approve</th> 
+                         
                           <th>Action</th> 
                           
                          
@@ -115,9 +120,14 @@ $query=mysqli_query($conn,"select * from request_tb");
                               <td><input type="text"  value="<?php echo $row['leave_date']; ?>" ></td>
 							  <td><input type="text" value="<?php echo $row['return_date']; ?>" ></td>
                               <td><input type="text" value="<?php echo $row['reason']; ?>" ></td>
-                              <td><input type="text" name="status" value="<?php echo $row['status']; ?>" ></td>
-                              <td><a href="edit_leave.php?edit_id=<?php echo $row['doctor_id']; ?>" name="edit" class="btn btn-primary">Approve</a></td>
-							 
+                              
+							  <?php
+                               if($row['status']==0){ ?>
+                              <td><a href="edit_leave.php?edit_id=<?php echo $row['doctor_id']; ?>" name="edit" class="btn btn-danger">Pending</a></td>
+							 <?php }
+							 else{ ?>
+                             <td><a href="" class="btn btn-success">Approved</td>
+							 <?php } ?>
 						  </tr>
 					  </tbody>
 					  <?php

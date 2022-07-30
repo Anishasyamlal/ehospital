@@ -10,7 +10,7 @@ if(isset($_POST['submit']))
     $pswd=$_POST['pswd'];
 	mysqli_query($conn,"insert into login_tb (type,username,password) values ('patient','$user','$pswd')");
 	$id=mysqli_insert_id($conn);
-	mysqli_query($conn,"INSERT INTO patient_reg(login_id,name,age,phno,address) VALUES('$id','$name','$age','$phno','$address')");
+	mysqli_query($conn,"insert into patient_reg(login_id,name,age,phno,address) values('$id','$name','$age','$phno','$address')");
 header("location:index.php");
 }
 ?>
@@ -111,7 +111,7 @@ header("location:index.php");
                         
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <input name="phno" id="" type="text" class="form-control" placeholder="Phone number" required="">
+                                <input name="phno" id="" type="text" class="form-control" placeholder="Phone number" required="" pattern="[0-9]{10}">
                             </div>
                         </div>
                         <div class="col-lg-12">

@@ -32,7 +32,14 @@ $qry=mysqli_query($conn,"select * from chat_to where patient_id='$patient_id' ")
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
+  <style>
+	td {
+  border: 2px solid blue;
+  border-collapse: collapse;
+  column-width: 100px;
+}
 
+</style>
 </head>
 <body>
 <header>
@@ -103,9 +110,9 @@ $qry=mysqli_query($conn,"select * from chat_to where patient_id='$patient_id' ")
                         <tr><th>Message</th> 
                           <th>Reply</th></tr>
                       
-					 <tr><td><input type="text" name="msg" value="<?php echo $row['message']; ?>" ></td>
-                     <td><input type="text" name="reply" value="<?php echo $row['reply']; ?>" ></td> </tr>
-                     <tr><th colspan=2><a href="chat.php" class="btn btn-primary">Add New</a></th></tr>
+					 <tr><td><?php echo $row['message']; ?></td>
+                     <td><?php echo $row['reply']; ?></td> </tr>
+                     <tr><th colspan=2 ><a href="chat.php" class="btn btn-primary">Add New</a></th></tr>
                       <?php
 				   }
 				   ?>

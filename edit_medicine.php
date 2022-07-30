@@ -26,7 +26,13 @@ $query=mysqli_query($conn,"select * from medicine_tb");
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
-
+  <style>
+	table,tr, th, td {
+  border: 2px solid blue;
+  border-collapse: collapse;
+  column-width: 100px;
+}
+</style>
 </head>
 <body>
 <header>
@@ -77,20 +83,15 @@ $query=mysqli_query($conn,"select * from medicine_tb");
 <section class="banner">
 <div class="container">
     <div class="row">
-      <div class="col-md-12">
-        <div class="block text-center">
-        <section class="appoinment section">
-  <div class="container">
-    <div class="row">
-
-      <div class="col-lg-6">
-           <div class="appoinment-wrap mt-5 mt-lg-0 pl-lg-5">
+      
+        <section  style="position: absolute;top:20%;left:0px">
+ 
            <h2 class="mb-2 title-color" style="color:white">Medicine View</h2>
             
                <form id="#" class="appoinment-form" method="post" >
 			 <!--  <div class="table-responsive"-->
 			 
-                    <table class="table-responsive" >
+                    <table>
                       <thead>
 					  
                         <tr>
@@ -101,7 +102,7 @@ $query=mysqli_query($conn,"select * from medicine_tb");
                           <th>Expiry Date</th> 
                           <th>Availability</th>
                           <th>Strip price</th> 
-                          <th>Action</th> 
+                          <th colspan=2>Action</th> 
                           
                          
                         </tr>
@@ -129,12 +130,9 @@ $query=mysqli_query($conn,"select * from medicine_tb");
 					</table>
 			 
 			</form>
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>
+           
 </section>
+		</div></div></section>
 <!-- footer Start -->
 <footer class="footer section gray-bg">
 	<div class="container">

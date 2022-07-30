@@ -17,6 +17,7 @@ if(isset($_POST['submit']))
 header("location:doctor_index.php");
     }
 }
+$qry=mysqli_query($conn,"select * from department_tb");
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -79,7 +80,7 @@ header("location:doctor_index.php");
 			  <li class="nav-item active">
 				<a class="nav-link" href="doctor_index.php">Home</a>
 			  </li>
-              <li class="nav-item"><a class="nav-link" href="request.php">Leave Request</a></li>
+             
               
 			</ul>
 		  </div>
@@ -110,10 +111,14 @@ header("location:doctor_index.php");
                             <div class="form-group">
                                 <select class="form-control" name="department" id="exampleFormControlSelect1">
                                   <option>Choose Department</option>
-                                  <option>General Medicine</option>
-                                  <option>Gynaecology</option>
-                                  <option>Paediatrics</option>
-                                  <option>Obstetrics</option>
+								  <?php 
+                                  while($row=mysqli_fetch_assoc($qry)){
+
+                                 ?>
+                                  <option><?php echo $row['name'];?></option>
+                                  <?php
+                                  }
+                                  ?>
                                 </select>
                             </div>
                         </div>

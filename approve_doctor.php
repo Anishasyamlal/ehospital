@@ -26,7 +26,12 @@ $query=mysqli_query($conn,"select * from doctor_reg");
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
-
+  <style>
+	table,tr, th, td {
+  border: 1px solid blue;
+  border-collapse: collapse;
+}
+</style>
 </head>
 <body>
 <header>
@@ -97,7 +102,7 @@ $query=mysqli_query($conn,"select * from doctor_reg");
                           <th>Address</th>
                           <th>Qualification</th> 
                           <th>Department</th> 
-                          <th>Approve</th> 
+                           
 						  <th>Action</th>
                           
                          
@@ -117,23 +122,22 @@ $query=mysqli_query($conn,"select * from doctor_reg");
 							  <td><input type="text"  value="<?php echo $row['address']; ?>" ></td>
 							  <td><input type="text" value="<?php echo $row['qualification']; ?>" ></td>
                               <td><input type="text"  value="<?php echo $row['department']; ?>" ></td>
-							  <td><input type="text"  value="<?php echo $row['approve']; ?>" ></td>
-							  <td><a href="edit_doctor.php?edit_id=<?php echo $row['doctor_id']; ?>"class="btn btn-primary" name="edit">Approve</a></td>
-							  <!-- <?php 
-							  $approve=$row['approve'];
 							  
-                             if($approve=0){?>
-                              <td><a href="edit_doctor.php?edit_id=<?php echo $row['doctor_id']; ?>"class="btn btn-primary" name="edit">Approve</a></td>
-<?php
-}
+							  <?php
+							  if($row['approve']==0){?>
+                             <td><a href="edit_doctor.php?edit_id=<?php echo $row['doctor_id'];?> " name="edit" class="btn btn-danger" >Pending</a></td>
+							  <?php }
 							  else{ ?>
-								<td><a href="edit_doctor.php?edit_id=<?php echo $row['doctor_id']; ?>"class="btn btn-primary" name="edit">Approved</a></td>
-						<?php	 }?> -->
+                               <td><a href="" class="btn btn-success">Approved</a></td>
+							 <?php  }
+							  ?>
+							 
 						  </tr>
-					  </tbody>
+					  
 					  <?php
 				   }
 				   ?>
+				   </tbody>
 					</table>
 			 
 			</form>

@@ -65,6 +65,12 @@ session_start();
 				<a class="nav-link" href="index.php">Home</a>
 			  </li>
              
+			  
+
+			    
+			   <li class="nav-item"><a class="nav-link" href="view_patient.php">View Patient</a></li>
+               <li class="nav-item"><a class="nav-link" href="request.php">Leave Request</a></li>
+               <li class="nav-item"><a class="nav-link" href="chat_reply.php">Chat with Patient</a></li>
 			   <li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile <i class="icofont-thin-down"></i></a>
 					<ul class="dropdown-menu" aria-labelledby="dropdown03">
@@ -73,11 +79,6 @@ session_start();
 						<li><a class="dropdown-item" href="index.php">Logout</a></li>
 					</ul>
 			  	</li>
-
-			    
-			   <li class="nav-item"><a class="nav-link" href="view_patient.php">View Patient</a></li>
-               <li class="nav-item"><a class="nav-link" href="request.php">Leave Request</a></li>
-               <li class="nav-item"><a class="nav-link" href="chat_reply.php">Chat with Patient</a></li>
 			</ul>
 		  </div>
 		</div>

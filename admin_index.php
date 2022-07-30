@@ -64,7 +64,9 @@ session_start();
 			  <li class="nav-item active">
 				<a class="nav-link" href="admin_index.php">Home</a>
 			  </li>
-             
+			  <li class="nav-item active">
+				<a class="nav-link" href="add_department.php">Add Department</a>
+			  </li>
 			   <li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">View <i class="icofont-thin-down"></i></a>
 					<ul class="dropdown-menu" aria-labelledby="dropdown03">

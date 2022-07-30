@@ -11,7 +11,7 @@ if(mysqli_num_rows($query)>0){
 	$result=mysqli_fetch_assoc($query);
 
 	$_SESSION['login_id']=$result['login_id'];
-	
+	$id=$_SESSION['login_id'];
 	$_SESSION['type']=$result['type'];
 	$t = $_SESSION['type'];
 	
@@ -20,8 +20,16 @@ if(mysqli_num_rows($query)>0){
 		header("location:admin_index.php");
 	}
 	else if($t=='doctor'){
-		
-		header("location:doctor_index.php");
+		$qry=mysqli_query($conn,"select approve from doctor_reg where login_id='$id'");
+		if(mysqli_num_rows($qry)>0){
+			$result=mysqli_fetch_assoc($qry);
+			$approve=$result['approve'];
+			if($approve==1){
+		header("location:doctor_index.php");}
+		else{
+			echo '<script> alert("Not approved") </script>';
+		}
+	}
 	}
 	else {
 		
@@ -53,14 +61,14 @@ if(mysqli_num_rows($query)>0){
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
-<!-- <script>
+<script>
 	function validate(){
 		var name=document.getElementById('name').value;
 		var pswd=document.getElementById('pswd').value;
-		if(namee==""){
+		if(name==""){
 			document.getElementById('sp1').innerHTML="Enter value";
 		}
-		if(user==""){
+		if(pswd==""){
 			document.getElementById('sp2').innerHTML="Enter value";
 		}
 	}
@@ -68,7 +76,7 @@ if(mysqli_num_rows($query)>0){
 		document.getElementById('sp').innerHTML="";
 
 	}
-</script> -->
+</script>
 </head>
 <body>
 <header>
@@ -155,15 +163,15 @@ if(mysqli_num_rows($query)>0){
                         </div>
                          <div class="col-sm-12">
                             <div class="form-group">
-                                <input name="user" id="name" type="text" class="form-control" placeholder="Username"  required="">  
-                            <!-- <span id="sp1" style="color:red;"></span> -->
+                                <input name="user" id="name" type="text" class="form-control" placeholder="Username" onkeyup="clrmsg('sp1')" >  
+                            <span id="sp1" style="color:red;"></span>
 							</div>
                         </div>
 
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <input name="pswd" id="pswd" type="password" class="form-control" placeholder="Password"  required="" >
-								<!-- <span id="sp2" style="color:red;"></span> -->
+                                <input name="pswd" id="pswd" type="password" class="form-control" placeholder="Password" onkeyup="clrmsg('sp2')" >
+								<span id="sp2" style="color:red;"></span>
 							</div>
                         </div>
                     </div>

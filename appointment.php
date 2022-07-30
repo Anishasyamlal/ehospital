@@ -21,6 +21,7 @@ if(isset($_POST['sub']))
 header("location:patient_index.php");
   }
 }
+$q=mysqli_query($conn,"select * from department_tb");
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -87,7 +88,7 @@ header("location:patient_index.php");
 			  </li>
               <li class="nav-item active">
 				<a class="nav-link" href="index.php">Logout</a></li>
-			  <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
+			  
 			</ul>
 		  </div>
 		</div>
@@ -134,10 +135,14 @@ header("location:patient_index.php");
                             <div class="form-group">
                                 <select class="form-control" name="department" id="exampleFormControlSelect1" required="">
                                   <option>Choose Department</option>
-                                  <option>General Medicine</option>
-                                  <option>Gynaecology</option>
-                                  <option>Paediatrics</option>
-                                  <option>Obstetrics</option>
+                                  <?php 
+                                  while($row=mysqli_fetch_assoc($q)){
+
+                                 ?>
+                                   <option><?php echo $row['name'];?></option>
+                                  <?php
+                                  }
+                                  ?>
                                 </select>
                             </div>
                         </div>
@@ -176,7 +181,7 @@ header("location:patient_index.php");
 
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <input name="phone" id="phone" type="text" class="form-control" placeholder="Phone Number" required="">
+                                <input name="phone" id="phone" type="text" class="form-control" placeholder="Phone Number" required="" pattern="[0-9]{10}">
                             </div>
                         </div>
                         <div class="col-lg-12">
